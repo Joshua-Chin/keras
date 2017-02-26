@@ -229,7 +229,7 @@ class Orthogonal(Initializer):
         self.seed = seed
 
     def __call__(self, shape, dtype=None):
-        flat_shape = (shape[0], np.prod(shape[1:]))
+        flat_shape = (np.prod(shape[:-1]), shape[-1])
         if self.seed is not None:
             np.random.seed(self.seed)
         a = np.random.normal(0.0, 1.0, flat_shape)
